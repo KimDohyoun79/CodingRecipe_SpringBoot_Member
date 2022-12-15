@@ -38,4 +38,22 @@ public class ClientController {
         memberService.save(member);
         return "redirect:/home";
     }
+
+
+    // 9. 로그인
+    @GetMapping("/member/login")
+    public String login(){
+        return "login";
+    }
+
+    @PostMapping("/member/login")
+    public String login2(MemberDTO memberDTO){
+        MemberDTO loginResult = memberService.login(memberDTO);
+
+        if(loginResult !=null){
+            return "redirect:/home";
+        }
+        else
+            return "redirect:/login";
+    }
 }

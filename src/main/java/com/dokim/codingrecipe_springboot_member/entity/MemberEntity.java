@@ -18,6 +18,7 @@ public class MemberEntity {
     private String password;
     private String name;
 
+    // 8. 회원가입
     public static MemberEntity toMemberEntity(MemberDTO memberDTO){
         MemberEntity memberEntity = new MemberEntity();
 
