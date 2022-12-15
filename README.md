@@ -27,7 +27,6 @@
   - `<input type="hidden" name="id" th:value="${memberDTO.id}"/>`
 - [완료] 12. 회원정보 수정
 - [완료] 13. 회원 삭제
-- [완료] 14.
 
 
 
