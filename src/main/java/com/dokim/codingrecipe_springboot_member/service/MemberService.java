@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,5 +41,24 @@ public class MemberService {
         } else
             return null;
 
+    }
+
+
+    //10. 회원 목록 출력
+    public List<MemberDTO> findAll(){
+        List<MemberEntity> memberEntityList = memberRepository.findAll();
+
+        List<MemberDTO> memberDTOList = new ArrayList<>();
+        for (MemberEntity memberEntity : memberEntityList){
+            memberDTOList.add(MemberDTO.memberDTO(memberEntity));
+        }
+
+        return memberDTOList;
+    }
+
+
+    // 삭제
+    public void delete(Integer id){
+        memberRepository.deleteById(id);
     }
 }
