@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -69,10 +70,26 @@ public class ClientController {
         return "list";
     }
 
+    // 11. 회원정보 상세조회
+    @GetMapping("/member/detail/{id}")
+    public String memberDetail(@PathVariable("id") Integer id, Model model) {
+        MemberEntity memberEntity = memberService.findById(id);
 
-    // 삭제
+        model.addAttribute("memberDTO", MemberDTO.memberDTO(memberEntity));
+        return "detail";
+    }
+
+
+    // 12. 회원정보 수정
+    @PostMapping("/member/update")
+    public String update(MemberDTO memberDTO) {
+        memberService.update(memberDTO);
+        return "redirect:/member/list";
+    }
+
+    // 13. 삭제
     @GetMapping("/member/delete/{id}")
-    public String memberDelete(@PathVariable("id") Integer id){
+    public String memberDelete(@PathVariable("id") Integer id) {
         memberService.delete(id);
         return "redirect:/member/list";
     }

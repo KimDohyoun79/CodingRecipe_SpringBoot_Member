@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Join</title>
+</head>
+<body>
+<h1>Join Page</h1>
+
+<form action="/member/update" method="post">
+    <input type="hidden" name="id" th:value="${memberDTO.id}"/>
+   id : <input type="text" name="memberId" th:value="${memberDTO.memberId}"> <br>
+   password : <input type="text" name="password" th:value="${memberDTO.password}" > <br>
+   name : <input type="text" name="name" th:value="${memberDTO.name}"> <br>
+    <button type="submit">정보 수정</button>
+</form>
+
+
+</body>
+</html>

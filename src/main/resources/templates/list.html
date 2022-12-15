@@ -25,7 +25,7 @@
             <td th:text="${memberDTO.memberId}">Member_ID</td>
             <td th:text="${memberDTO.password}">PassWord</td>
             <td th:text="${memberDTO.name}">Name</td>
-            <td>상세조회</td>
+            <td><a th:href="@{/member/detail/{id}(id=${memberDTO.id})}">상세조회</a></td>
             <td><a th:href="@{/member/delete/{id}(id=${memberDTO.id})}">삭제</a></td>
         </tr>
     </tbody>

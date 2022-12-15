@@ -26,6 +26,7 @@ public class MemberService {
         memberRepository.save(memberEntity);
     }
 
+
     // 9. 로그인
     public MemberDTO login(MemberDTO memberDTO) {
         // 1. 회원이 입력한 id을 DB에서 조회
@@ -57,7 +58,31 @@ public class MemberService {
     }
 
 
-    // 삭제
+    // 11. 회원정보 상세조회
+    public MemberEntity findById(Integer id){
+        Optional<MemberEntity> memberEntity = memberRepository.findById(id);
+
+        if (memberEntity.isPresent())
+            return memberEntity.get();
+        else
+            return null;
+
+    }
+
+
+    // 12. 회원정보 수정
+    public void update(MemberDTO memberDTO){
+        MemberEntity memberEntity = memberRepository.findById(memberDTO.getId()).get();
+
+        memberEntity.setMemberId(memberDTO.getMemberId());
+        memberEntity.setPassword(memberDTO.getPassword());
+        memberEntity.setName(memberDTO.getName());
+
+        memberRepository.save(memberEntity);
+    }
+
+
+    // 13. 삭제
     public void delete(Integer id){
         memberRepository.deleteById(id);
     }
